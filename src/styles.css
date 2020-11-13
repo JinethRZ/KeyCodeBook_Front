@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+.rojo {
+    background-color: red;
+}
+
+.error-message{
+    color: red;
+    font-weight: bold;
+}

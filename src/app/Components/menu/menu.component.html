@@ -1,0 +1,75 @@
+<div *ngIf="!user">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Key Code Book</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Inicio</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/sign-up">Regístrese</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Iniciar sesión</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div *ngIf="user && user.role == 'Admin'">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <a class="navbar-brand" href="#">Key Code Book</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/create-book">Registrar libros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/create-genre">Registrar géneros</a>
+        </li>
+      </ul>
+      <span class="navbar-text"> <b>Hola {{user.firstName}}</b> </span>
+      <span class="material-icons close-icon" (click)="destroySession()">power_settings_new</span>
+    </div>
+  </nav>
+
+</div>
+<div *ngIf="user && user.role == 'User'">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <a class="navbar-brand" href="#">Key Code Book</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/list-book">Ver libros</a>
+        </li>
+      </ul>
+      <span class="navbar-text"> <b>Hola {{user.firstName}}</b> </span>
+      <span class="material-icons close-icon" (click)="destroySession()">power_settings_new</span>
+    </div>
+  </nav>
+
+</div>

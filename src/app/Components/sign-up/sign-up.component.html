@@ -1,0 +1,50 @@
+<!-- DIRECTIVAS DE ANGULAR 
+  -- *rooterLink→ Enlace de las páginas.
+  -- *ngIf = Condicional <div *ngIf="1 == 1"  > Se mostrará lo que esté acá </div>
+  -- *ngFor = Ciclos --- Nos permite recorrer arreglos
+-->
+
+<div class="container">
+  <h1>Regístrese en Key Code Book</h1>
+
+ <form [formGroup]="signUpForm" (ngSubmit)="saveUser()"> <!--(ngSubmit)="saveUser()"→reemplazo de onclick -->
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Nombres</label>
+        <input formControlName="firstName" id="firstName" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Apellidos</label>
+        <input formControlName="lastName" id="lastName" type="text" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-row" >
+      <div class="form-group col-md-6" >
+        <label>Correo</label>
+        <input formControlName="email" id="email" type="text" class="form-control" >
+        <p *ngIf="signUpForm.get('email').hasError('email')" class="error-message">El correo electrónico es incorrecto.</p>
+      </div>
+      <div class="form-group col-md-6" >
+        <label>Contraseña</label>
+        <input formControlName="password" id="password" type="password" class="form-control" >
+        <p *ngIf="signUpForm.get('password').errors?.minlength" class="error-message">La contraseña debe tener mínimo seis caracteres.</p><!--minlength sólo en esta parte del .html sin camel case-->
+      </div>
+    </div>
+
+    <div class="form-row" >
+      <div class="form-group col-md-6" >
+        <label>Fecha de nacimiento</label>
+        <input formControlName="birthDate" id="birthDate" type="date" class="form-control" >
+      </div>
+      <div class="form-group col-md-6" >
+        <label>Edad</label>
+        <input formControlName="age" id="age" type="number" class="form-control" >
+      </div>
+    </div>
+
+    <button class="btn btn-info">Registrar</button>
+
+  </form>
+</div>
