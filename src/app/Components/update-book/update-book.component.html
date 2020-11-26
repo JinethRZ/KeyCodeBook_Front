@@ -1,0 +1,49 @@
+<div class="container" >
+    <h1>Crear libro</h1>
+    <form [formGroup]="createBookForm" (ngSubmit)="saveBook()" >
+
+        <div class="form-row" >
+            <div class="form-group col-md-6" >
+              <label>Nombre</label>
+              <input formControlName="name" id="name" type="text" class="form-control" >
+            </div>
+            <div class="form-group col-md-6" >
+              <label>Autor</label>
+              <input formControlName="author" id="author" type="text" class="form-control" >
+            </div>
+        </div>
+
+        <div class="form-row" >
+            <div class="form-group col-md-6" >
+              <label>Número de páginas</label>
+              <input formControlName="pageNumber" id="pageNumber" type="number" class="form-control" >
+            </div>
+            <div class="form-group col-md-6" >
+              <label>Editorial</label>
+              <input formControlName="publisher" id="publisher" type="text" class="form-control" >
+            </div>
+        </div>
+
+        <div class="form-row" >
+            <div class="form-group col-md-12" >
+              <label>Fecha de publicación</label>
+              <input formControlName="publicationDate" id="publicationDate" type="date" class="form-control" >
+            </div>
+        </div>
+
+        <div class="form-row" >
+            <div class="form-group col-md-12" >
+                <label>Género del libro</label>
+                <input formControlName="genre" id="genre" type="hidden" class="form-control" >
+                <div class="row">
+                    <div class="col" *ngFor="let g of allGenre" >
+                        <input type="checkbox" value="{{g._id}}" checked="{{genreBook.includes(g._id) ? 'checked': ''}}" (click)="saveGenre($event)">
+                        <label>{{g.name}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-info">Actualizar</button>
+    </form>
+</div>
